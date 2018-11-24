@@ -18,3 +18,5 @@ cat $KEYFILE
 
 # Start sshd
 /usr/sbin/sshd -D
+
+while :; do sleep 60; done

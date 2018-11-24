@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  x2go:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+
+    ports:
+      - "2222:22"

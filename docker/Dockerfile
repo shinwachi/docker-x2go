@@ -1,11 +1,15 @@
 FROM ubuntu
-MAINTAINER Tatsuya Kawano
+#Original MAINTAINER Tatsuya Kawano
 
 # Please change this value to force the builders at Quay.io/Docker Hub
 # to omit the cached Docker images. This will have the same effect to
 # adding `--no-cache` to `docker build` command.
 #
-ENV DOCKERFILE_UPDATED 2017-04-02
+ENV DOCKERFILE_UPDATED 2018-11-24
+
+# openbox obconf obmenu: desktop
+# conky: system monitor
+# nitrogen: desktop manager
 
 RUN (apt-get update && \
      apt-get install -y software-properties-common && \
@@ -15,7 +19,7 @@ RUN (apt-get update && \
          x2goserver x2goserver-xsession ttf-dejavu fonts-ipafont-gothic \
          openbox obconf obmenu conky nitrogen \
          sudo rxvt-unicode-256color \
-         firefox emacs)
+         firefox vim)
 
 RUN (mkdir -p /var/run/sshd && \
      sed -ri 's/UseDNS yes/#UseDNS yes/g' /etc/ssh/sshd_config && \
@@ -37,7 +41,8 @@ RUN chmod 440 /etc/sudoers.d/999-sudoers-docker
 ADD ./start-sshd.sh /root/start-sshd.sh
 RUN chmod 744 /root/start-sshd.sh
 
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# no need to localize to japanese language
+#RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 EXPOSE 22
 ENTRYPOINT ["/root/start-sshd.sh"]

@@ -1,5 +1,10 @@
 # docker-x2go
 
+(Original script by Tatsuya Kawano)
+
+
+
+
 Remote desktop [X2Go Server](http://wiki.x2go.org/doku.php) in a dock
 
 [![Docker Repository on Quay.io](https://quay.io/repository/tatsuya6502/x2go/status "Docker Repository on Quay.io")](https://quay.io/repository/tatsuya6502/x2go)
@@ -18,8 +23,7 @@ Run the script as the followings. This will pull the Docker image
 and run it.
 
 ```
-$ cd docker-x2go
-$ ./run.sh
+$ docker-compose up
 ```
 
 It will generate an ssh key at start up and add it to
@@ -39,7 +43,7 @@ T72VqyNeFTqywuuA2tgF8ZhV1UC+Qxi0EmxoeRQAnt62EUerj1HcVm+MzveT+VWa
 If the key was not printed, try this command:
 
 ```
-$ docker logs x2go
+$ docker logs docker-x2go_x2go_1
 ```
 
 Save the key to your local PC.
